@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Project Gallery | T G Narayanan{% endblock %}
+{% block content %}
+<main class="wrap section gallery-only">
+  {% if images %}
+    <div class="gallery-grid">{% for image in images %}<figure class="gallery-item"><img src="{{ url_for('static', filename='gallery/' ~ image) }}" alt="Project photo {{ loop.index }}" loading="lazy"></figure>{% endfor %}</div>
+  {% else %}
+    <p class="muted">Project photos will appear here after you add image files to <code>static/gallery/</code> in your GitHub repository.</p>
+  {% endif %}
+</main>
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}T G Narayanan | STEM Trainer & Project Developer{% endblock %}
+{% block content %}
+<main class="wrap">
+  <section class="hero" id="home">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> STEM TRAINER · ELECTRONICS · INNOVATION</div>
+      <h1>Hi, I'm <span>T G Narayanan</span>.</h1>
+      <p class="lead">M.Sc. Electronics graduate, STEM Trainer and hands-on project developer working across robotics, embedded systems, IoT and computer science projects.</p>
+      <p class="muted">Based in Paramakudi, Ramanathapuram District, Tamil Nadu, India.</p>
+      <div class="actions">
+        <a class="btn primary" href="#projects">Explore projects ↗</a>
+        <a class="btn" href="{{ url_for('resume') }}">View resume ↓</a>
+        <a class="btn" href="{{ url_for('project_request') }}">Request a project</a>
+      </div>
+    </div>
+    <aside class="hero-card">
+      <img class="profile-photo" src="{{ url_for('static', filename='profile-photo.jpeg') }}" alt="T G Narayanan profile photo">
+      <span class="tag">PROFILE SNAPSHOT</span>
+      <h2>{{ profile.degree }}</h2>
+      <p class="muted">{{ profile.headline }}</p>
+      <div class="mini-grid">
+        <div class="mini"><strong>2025</strong><span class="small muted">M.Sc. completed</span></div>
+        <div class="mini"><strong>2023</strong><span class="small muted">B.Sc. completed</span></div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="section" id="about">
+    <div class="section-head"><div><span class="tag">ABOUT ME</span><h2>Learning by building.<br>Teaching by doing.</h2></div>
+      <p>I enjoy turning electronics and technology ideas into practical working models, and helping learners understand STEM through hands-on projects.</p></div>
+    <div class="grid-2">
+      <article class="glass"><h3>What I do</h3><p class="muted">STEM training, robotics prototyping, embedded systems development, IoT projects and technical project guidance.</p></article>
+      <article class="glass"><h3>My approach</h3><p class="muted">Start with a real-world problem, plan the system, integrate hardware and software, test the prototype and explain how it works.</p></article>
+    </div>
+  </section>
+
+  <section class="section" id="journey">
+    <div class="section-head"><div><span class="tag">MY JOURNEY</span><h2>Education & milestones</h2></div><p>A growing journey through electronics, practical engineering and STEM education.</p></div>
+    <div class="timeline">
+      <article class="timeline-card"><div class="year">2023</div><h3>B.Sc. Electronics</h3><p class="muted">Undergraduate degree completed. UG project: RFID-Based Real-Time Attendance System.</p></article>
+      <article class="timeline-card"><div class="year">2025</div><h3>M.Sc. Electronics</h3><p class="muted">Postgraduate degree completed. PG project: ANPR-Based Smart Toll Payment & Vehicle Management System.</p></article>
+      <article class="timeline-card"><div class="year">PRESENT</div><h3>STEM Trainer & Project Developer</h3><p class="muted">Supporting practical learning and developing real-time robotics, embedded systems, IoT and computer science projects.</p></article>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="section-head"><div><span class="tag">SELECTED WORK</span><h2>Projects & practical builds</h2></div><p>Project cards can be expanded with your photos, circuit diagrams, GitHub repositories, videos and detailed documentation.</p></div>
+    <div class="grid-3">
+      {% for project in profile.projects %}
+      <article class="project-card">
+        <div class="project-icon">{% if loop.index == 1 %}📡{% elif loop.index == 2 %}🚘{% else %}🤖{% endif %}</div>
+        <span class="tag">{{ project.category }}</span>
+        <h3>{{ project.title }}</h3>
+        <p class="muted">{{ project.description }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="section-head"><div><span class="tag">TECHNICAL INTERESTS</span><h2>Skills & domains</h2></div><p>Areas of hands-on work and project development.</p></div>
+    <div class="skill-list">
+      {% for skill in ["STEM Education & Training","Electronics","Robotics","Embedded Systems","IoT Projects","Microcontrollers","Sensors & Actuators","Hardware Prototyping","Computer Science Projects","Project Documentation"] %}
+      <span class="skill">{{ skill }}</span>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="section" id="profile">
+    <div class="section-head"><div><span class="tag">PROFILE DETAILS</span><h2>A little more about me</h2></div></div>
+    <div class="two-col">
+      <article class="glass">
+        <div class="profile-row"><b>Qualification</b><span>{{ profile.degree }}</span></div>
+        <div class="profile-row"><b>Location</b><span>{{ profile.location }}</span></div>
+        <div class="profile-row"><b>Languages</b><span>{{ profile.languages | join(", ") }}</span></div>
+        <div class="profile-row"><b>Current role</b><span>STEM Trainer</span></div>
+      </article>
+      <article class="contact-panel" id="contact">
+        <span class="tag">LET'S BUILD SOMETHING</span><h2>Have a project idea?</h2>
+        <p class="muted">Share your project requirements, expected features, preferred components and timeline. I'll review the details and respond by email.</p>
+        <div class="actions">
+          <a class="btn primary" href="{{ url_for('project_request') }}">Send project requirements ↗</a>
+          <a class="btn" href="mailto:{{ profile.email }}?subject=Project%20Enquiry">Email me</a>
+        </div>
+        <p class="small muted">{{ profile.email }}</p>
+      </article>
+    </div>
+  </section>
+</main>
+{% endblock %}

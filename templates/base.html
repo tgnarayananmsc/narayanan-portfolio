@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Portfolio of T G Narayanan, STEM Trainer and M.Sc. Electronics graduate working in robotics, embedded systems and IoT projects.">
+  <title>{% block title %}T G Narayanan | Portfolio{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav class="nav">
+    <a class="brand" href="{{ url_for('home') }}">TGN<span>.</span></a>
+    <div class="navlinks">
+      <a href="{{ url_for('home') }}#about">About</a><a href="{{ url_for('home') }}#journey">Journey</a>
+      <a href="{{ url_for('home') }}#projects">Projects</a><a href="{{ url_for('gallery') }}">Gallery</a><a href="{{ url_for('home') }}#skills">Skills</a>
+      <a href="{{ url_for('resume') }}">Resume</a><a href="{{ url_for('project_request') }}">Project request</a>
+    </div>
+  </nav>
+  {% block content %}{% endblock %}
+  <footer><div class="wrap"><span>© <span data-current-year></span> T G Narayanan.</span></div></footer>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

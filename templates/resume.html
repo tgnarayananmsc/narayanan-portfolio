@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Resume | T G Narayanan{% endblock %}
+{% block content %}
+<main class="wrap section">
+  <span class="tag">RESUME / CV</span><h1 style="font-size:clamp(2.5rem,6vw,4.2rem)">T G <span style="color:var(--green)">Narayanan</span></h1>
+  <p class="lead">{{ profile.headline }}</p>
+  <div class="actions"><button class="btn primary" onclick="window.print()">Print / Save as PDF</button><a class="btn" href="mailto:{{ profile.email }}">Contact by email</a></div>
+  <section class="section"><h2>Professional summary</h2><p class="muted">M.Sc. Electronics postgraduate and STEM Trainer with an interest in practical project development across robotics, embedded systems, IoT and computer science. Focused on hands-on learning, prototyping and helping turn project requirements into working demonstrations.</p></section>
+  <section class="section"><h2>Education</h2><div class="timeline">
+    {% for item in profile.education %}<article class="timeline-card"><div class="year">{{ item.year }}</div><h3>{{ item.degree }}</h3><p class="muted">{{ item.status }}</p></article>{% endfor %}
+  </div></section>
+  <section class="section"><h2>Role</h2><article class="glass"><h3>STEM Trainer</h3><p class="muted">Hands-on STEM education, electronics demonstrations, robotics and project guidance.</p></article></section>
+  <section class="section"><h2>Academic projects</h2><div class="grid-2">{% for project in profile.projects[:2] %}<article class="glass"><span class="tag">{{ project.category }}</span><h3>{{ project.title }}</h3><p class="muted">{{ project.description }}</p></article>{% endfor %}</div></section>
+  <section class="section"><h2>Technical domains</h2><p class="muted">Electronics · Robotics · Embedded Systems · IoT · Sensors & Actuators · Hardware Prototyping · STEM Training · Computer Science Projects</p></section>
+  <section class="section"><h2>Personal details</h2><div class="glass">
+    <div class="profile-row"><b>Location</b><span>{{ profile.location }}</span></div>
+    <div class="profile-row"><b>Languages</b><span>{{ profile.languages | join(", ") }}</span></div>
+    <div class="profile-row"><b>Email</b><span>{{ profile.email }}</span></div>
+  </div><p class="small muted">For privacy, date of birth and gender are intentionally omitted from the public resume by default. Add them only if you specifically need them on a CV.</p></section>
+</main>
+{% endblock %}

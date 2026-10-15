@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Project Request | T G Narayanan{% endblock %}
+{% block content %}
+<main class="wrap">
+  <section class="form-card">
+    <span class="tag">PROJECT ENQUIRY</span><h1 style="font-size:clamp(2.2rem,5vw,3.7rem)">Let's discuss your <span style="color:var(--green)">project.</span></h1>
+    <p class="muted">Describe your idea in detail. The form will prepare an email addressed to {{ profile.email }}; it does not silently store or send your details to a database.</p>
+    <form method="post">
+      <div class="grid-2">
+        <div class="field"><label for="name">Your name *</label><input id="name" name="name" required value="{{ values.get('name','') }}" placeholder="Enter your name"></div>
+        <div class="field"><label for="email">Your email</label><input id="email" name="email" type="email" value="{{ values.get('email','') }}" placeholder="you@example.com"></div>
+      </div>
+      <div class="grid-2">
+        <div class="field"><label for="project_type">Project category</label><select id="project_type" name="project_type">
+          <option value="">Choose a category</option>{% for option in ["Robotics","Embedded Systems","IoT","Electronics","Computer Science","STEM Training","Academic Project","Other"] %}<option {% if values.get('project_type') == option %}selected{% endif %}>{{ option }}</option>{% endfor %}
+        </select></div>
+        <div class="field"><label for="budget">Budget (optional)</label><input id="budget" name="budget" value="{{ values.get('budget','') }}" placeholder="Approximate budget / not decided"></div>
+      </div>
+      <div class="field"><label for="deadline">Expected timeline</label><input id="deadline" name="deadline" value="{{ values.get('deadline','') }}" placeholder="e.g. 3 weeks / before a project review"></div>
+      <div class="field"><label for="requirements">Project requirements *</label><textarea id="requirements" name="requirements" required placeholder="What should the project do? Mention required features, hardware, sensors, software, display/dashboard, power source, budget, and what help you need.">{{ values.get('requirements','') }}</textarea></div>
+      <button class="btn primary" type="submit">Prepare email ↗</button>
+      <p class="small muted">Your email app must be configured to open the prepared message. You can also email directly at <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>.</p>
+    </form>
+  </section>
+</main>
+{% endblock %}

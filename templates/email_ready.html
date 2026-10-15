@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Email Ready | T G Narayanan{% endblock %}
+{% block content %}
+<main class="wrap section"><div class="form-card">
+  <span class="tag">READY TO SEND</span><h1 style="font-size:3rem">Your enquiry is <span style="color:var(--green)">prepared.</span></h1>
+  <p class="muted">Choose the button below to open your email app with the project details filled in. Review the message and press Send in your email app.</p>
+  <div class="actions"><a class="btn primary" href="{{ mailto }}">Open prepared email ↗</a><a class="btn" href="{{ url_for('project_request') }}">Back to form</a></div>
+  <p class="small muted">If the email app does not open, email <a href="mailto:{{ profile.email }}">{{ profile.email }}</a> manually and paste your requirements.</p>
+</div></main>
+{% endblock %}

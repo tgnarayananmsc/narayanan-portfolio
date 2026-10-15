@@ -1,34 +1,11 @@
-# T G Narayanan Portfolio Website
+# T G Narayanan Portfolio — GitHub Pages
 
-A Flask-based portfolio website. There is **no admin dashboard, no admin login, and no image-upload dashboard**.
+Static website for GitHub Pages. Upload the contents of this folder to the root of `tgnarayananmsc/narayanan-portfolio`. The site entry file is `index.html`.
 
-## Add your project photos through GitHub
+## Gallery photos
+1. Upload photos to `static/gallery/`.
+2. Open `gallery.html` in GitHub and click Edit.
+3. Find `const galleryImages = [];` and add image filenames, for example `const galleryImages = ["project1.jpg", "project2.png"];`.
+4. Commit changes.
 
-1. Open your GitHub repository.
-2. Open `static/gallery/`.
-3. Choose **Add file → Upload files**.
-4. Upload your `.jpg`, `.jpeg`, `.png`, `.webp`, or `.gif` project photos.
-5. Commit the changes. Refresh the Gallery page after the site redeploys.
-
-The gallery automatically lists image files from `static/gallery/`. It shows photos only, without image filenames or captions.
-
-## Run locally on Windows
-
-1. Install Python 3.10 or newer.
-2. Open a terminal in this folder.
-3. Run:
-
-   ```powershell
-   py -m venv .venv
-   .venv\\Scripts\\activate
-   pip install -r requirements.txt
-   python app.py
-   ```
-
-4. Open `http://127.0.0.1:5000`.
-
-There is no `start_portfolio.bat` file. All internal navigation links use the same browser tab.
-
-## Resume
-
-To publish your resume, place your PDF at `static/resume.pdf` and ensure the resume template links to it. Replace that file in GitHub whenever your resume changes.
+This version does not require Flask or Python hosting.

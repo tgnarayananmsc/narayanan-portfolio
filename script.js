@@ -33,3 +33,14 @@ if(form){
     btn.disabled=false;btn.textContent='Send project request ↗';
   });
 }
+// Project images: placeholder fallback + lightbox
+document.querySelectorAll('.shot img').forEach(i=>{
+  i.addEventListener('error',()=>i.parentElement.classList.add('empty'));
+  if(i.complete&&i.naturalWidth===0)i.parentElement.classList.add('empty');
+});
+const lb=document.getElementById('lb');
+if(lb){document.querySelectorAll('.shot').forEach(s=>s.addEventListener('click',()=>{
+  const i=s.querySelector('img');if(s.classList.contains('empty'))return;
+  lb.querySelector('img').src=i.src;lb.classList.add('on')}));
+  lb.addEventListener('click',()=>lb.classList.remove('on'));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on')});}
